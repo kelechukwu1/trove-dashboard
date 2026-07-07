@@ -42,7 +42,7 @@ export default function DashboardPage() {
       <AccountList accounts={accounts} isLoading={isLoading} />
 
       {/* Holdings & Transactions — tabbed on mobile, side by side on desktop */}
-      <div className="block lg:hidden md:pb-8 xl:pb-0">
+      <div className="block lg:hidden md:pb-8 lg:pb-0">
         <Tabs defaultValue="stocks">
           <TabsList>
             <TabsTrigger value="stocks">Stocks</TabsTrigger>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
         </Tabs>
       </div>
 
-      <div className="hidden lg:grid lg:grid-cols-2 gap-6 pb-8">
+      <div className="hidden lg:grid lg:grid-cols-2 gap-6">
         <HoldingsList
           holdings={allHoldings}
           isLoading={isLoading}
