@@ -14,6 +14,7 @@ interface NetWorthCardProps {
   netWorth: number;
   change: { amount: number; percentage: number };
   chartData: ChartDataPoint[];
+  period: string;
   onPeriodChange: (period: string) => void;
   isLoading?: boolean;
 }
@@ -22,6 +23,7 @@ export function NetWorthCard({
   netWorth,
   change,
   chartData,
+  period,
   onPeriodChange,
   isLoading = false,
 }: NetWorthCardProps) {
@@ -63,7 +65,7 @@ export function NetWorthCard({
           </div>
 
           {/* Period tabs */}
-          <Tabs defaultValue={TimePeriod.ONE_DAY} onValueChange={onPeriodChange}>
+          <Tabs defaultValue={TimePeriod.ONE_DAY} value={period} onValueChange={onPeriodChange}>
             <TabsList>
               <TabsTrigger value={TimePeriod.ONE_DAY}>1D</TabsTrigger>
               <TabsTrigger value={TimePeriod.ONE_WEEK}>1W</TabsTrigger>

@@ -18,6 +18,7 @@ export default function DashboardPage() {
     accounts,
     chartData,
     isLoading,
+    period,
     fetchChartData,
   } = usePortfolioData();
 
@@ -29,6 +30,7 @@ export default function DashboardPage() {
           netWorth={netWorth}
           change={portfolioChange}
           chartData={chartData}
+          period={period}
           onPeriodChange={fetchChartData}
           isLoading={isLoading}
         />

@@ -85,6 +85,7 @@ export function usePortfolioData() {
     },
     isLoading,
     error,
+    period,
     fetchChartData: setPeriod,
     refetch: refetchBase,
   };
