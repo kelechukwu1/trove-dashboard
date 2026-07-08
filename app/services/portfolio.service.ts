@@ -131,8 +131,8 @@ class PortfolioService {
 
     switch (period) {
       case "1D":
-        points = 10;
-        dayStep = 1 / 10;
+        points = 24;
+        dayStep = 1 / 24;
         break;
       case "1W":
         points = 7;
@@ -169,11 +169,13 @@ class PortfolioService {
       date.setDate(date.getDate() - (points - i - 1) * dayStep);
 
       const progress = i / (points - 1);
-      // Sigmoid curve with some noise for realistic chart
-      const sigmoid = 1 / (1 + Math.exp(-6 * (progress - 0.4)));
-      const noise =
-        (Math.sin(i * 2.5) * 0.02 + Math.cos(i * 1.3) * 0.015) * netWorth;
-      const value = baseValue + growth * sigmoid + noise;
+      // Create big sweeping hills and valleys (slopy curve)
+      // The (1 - progress) ensures the wave smoothly returns to 0 at the final point so we hit the exact net worth
+      const wave =
+        Math.sin(progress * Math.PI * 3.5) * 0.4 * netWorth * (1 - progress);
+
+      // Combine linear growth with the sweeping wave
+      const value = baseValue + growth * progress + wave;
 
       data.push({
         date:

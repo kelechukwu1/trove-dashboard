@@ -103,10 +103,10 @@ function Chart({
             </linearGradient>
           </defs>
           <Area
-            type="monotone"
+            type="natural"
             dataKey="value"
             stroke={color}
-            strokeWidth={2}
+            strokeWidth={3}
             fill="url(#chartGradient)"
             animationDuration={800}
             animationEasing="ease-out"
