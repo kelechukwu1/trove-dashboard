@@ -18,6 +18,7 @@ export default function DashboardPage() {
     accounts,
     chartData,
     isLoading,
+    isChartLoading,
     period,
     fetchChartData,
   } = usePortfolioData();
@@ -33,6 +34,7 @@ export default function DashboardPage() {
           period={period}
           onPeriodChange={fetchChartData}
           isLoading={isLoading}
+          isChartLoading={isChartLoading}
         />
         <AllocationCard
           allocation={allocation}

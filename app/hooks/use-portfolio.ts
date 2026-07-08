@@ -64,7 +64,7 @@ export function usePortfolioData() {
     },
   });
 
-  const isLoading = isBaseLoading || isChartLoading;
+  const isLoading = isBaseLoading;
   const error =
     baseError || chartError
       ? "Failed to load portfolio data. Please try again."
@@ -84,6 +84,7 @@ export function usePortfolioData() {
       percentage: 0,
     },
     isLoading,
+    isChartLoading,
     error,
     period,
     fetchChartData: setPeriod,

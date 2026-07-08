@@ -17,6 +17,7 @@ interface NetWorthCardProps {
   period: string;
   onPeriodChange: (period: string) => void;
   isLoading?: boolean;
+  isChartLoading?: boolean;
 }
 
 export function NetWorthCard({
@@ -26,6 +27,7 @@ export function NetWorthCard({
   period,
   onPeriodChange,
   isLoading = false,
+  isChartLoading = false,
 }: NetWorthCardProps) {
   const [isHidden, setIsHidden] = useState(false);
   const isPositive = change.percentage >= 0;
@@ -97,12 +99,16 @@ export function NetWorthCard({
         </div>
 
         {/* Chart */}
-        <div className="animate-fade-in mt-4">
-          <Chart
-            data={chartData}
-            color={isPositive ? "#059A83" : "#BF221C"}
-            height={180}
-          />
+        <div className="animate-fade-in mt-4 h-[180px]">
+          {isChartLoading ? (
+            <Skeleton className="h-full w-full" />
+          ) : (
+            <Chart
+              data={chartData}
+              color={isPositive ? "#059A83" : "#BF221C"}
+              height={180}
+            />
+          )}
         </div>
       </CardContent>
     </Card>

@@ -78,7 +78,7 @@ class PortfolioService {
   }
 
   async getSectorAllocation(): Promise<SectorAllocation[]> {
-    await simulateDelay();
+    await simulateDelay(300);
 
     // Only include active holdings with valid prices
     const activeHoldings = this.data.holdings
@@ -131,8 +131,8 @@ class PortfolioService {
 
     switch (period) {
       case "1D":
-        points = 24;
-        dayStep = 1 / 24;
+        points = 10;
+        dayStep = 1 / 10;
         break;
       case "1W":
         points = 7;

@@ -6,14 +6,8 @@ import type {
   HoldingWithCalculations,
 } from "@/types/portfolio.types";
 
-const SIMULATED_DELAY_MIN = 400;
-const SIMULATED_DELAY_MAX = 800;
-
-export function simulateDelay(): Promise<void> {
-  const delay =
-    Math.random() * (SIMULATED_DELAY_MAX - SIMULATED_DELAY_MIN) +
-    SIMULATED_DELAY_MIN;
-  return new Promise((resolve) => setTimeout(resolve, delay));
+export function simulateDelay(ms: number = 500): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export function castTransactions(
